@@ -4,34 +4,36 @@
     <Instances count="1" />
     <ConfigurationSettings> 
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=$storage$;AccountKey=$storageKey$" />
-      <Setting name="ServiceDnsName" value="%ServiceDns%" /> 
-      <!-- xyz.cloudapp.net--> 
-      <Setting name="ServiceCNAME" value="%CName%" /> 
+		<Setting name="ServiceDnsName" value="crbot0522.eastus2.cloudapp.azure.com" />
+		<!-- xyz.cloudapp.net-->
+		<Setting name="ServiceCNAME" value="crbot0522cloud.graphsampletesting.com" />
       <!-- CNAME pointing to the .cloudapp.net if available.--> 
-      <Setting name="DefaultCertificate" value="ABC0000000000000000000000000000000000CBA" /> 
+      <Setting name="DefaultCertificate" value="3EAAC8C1F7D36C68F5E70D5485BAA12D82736E7D" /> 
       <Setting name="APPINSIGHTS_INSTRUMENTATIONKEY" value="" />
-      <Setting name="GroupSize" value="%GroupSize%" />
-      <Setting name="AadAppId" value="%AppId%" />
-      <Setting name="AadAppSecret" value="%AppSecret%" />
+      <Setting name="GroupSize" value="1000" />
+      <Setting name="AadAppId" value="c83a3ff9-b4b8-4292-8428-be2682cc531c" />
+      <Setting name="AadAppSecret" value="d658Q~b3_sTcOblCqGqYjjPREIQY6awwz3i6rcMo" />
       <Setting name="SingleAudioStream" value="false" />
       <Setting name="DisableAppInsightLogging" value="false" />
       <Setting name="DisableAudioStreamIo" value="false" />
     </ConfigurationSettings> 
     <Certificates> 
-      <Certificate name="Default" thumbprint="ABC0000000000000000000000000000000000CBA" thumbprintAlgorithm="sha1" /> 
+      <Certificate name="Default" thumbprint="3EAAC8C1F7D36C68F5E70D5485BAA12D82736E7D" thumbprintAlgorithm="sha1" /> 
     </Certificates> 
   </Role>
-  <NetworkConfiguration>
-      <VirtualNetworkSite name="%VNetName%" />
-      <AddressAssignments>
-      <InstanceAddress roleName="CRWorkerRole">
-          <Subnets>
-              <Subnet name="%SubnetName%" />
-          </Subnets>
-          <PublicIPs>
-          <PublicIP name="instancePublicIP" domainNameLabel="pip" />
-        </PublicIPs>
-      </InstanceAddress>
-    </AddressAssignments>
-  </NetworkConfiguration>
+	<NetworkConfiguration>
+		<!-- Name of VirtualNetworSite.-->
+		<VirtualNetworkSite name="crbotvnet-1" />
+		<AddressAssignments>
+			<InstanceAddress roleName="CRWorkerRole">
+				<!-- Name of Subnets.-->
+				<Subnets>
+					<Subnet name="crbotsubnet-1"/>
+				</Subnets>
+				<PublicIPs>
+					<PublicIP name="crbot-ip" domainNameLabel="pip1" />
+				</PublicIPs>
+			</InstanceAddress>
+		</AddressAssignments>
+	</NetworkConfiguration>
 </ServiceConfiguration>

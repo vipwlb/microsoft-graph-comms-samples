@@ -96,8 +96,7 @@ namespace Sample.PolicyRecordingBot.WorkerRole
                 Service.Instance.Start();
                 if (!string.IsNullOrEmpty(this.instrumentationKey))
                 {
-                    Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.Active.InstrumentationKey =
-                        this.instrumentationKey;
+                    Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration.Active.InstrumentationKey =this.instrumentationKey;
                 }
 
                 var result = base.OnStart();

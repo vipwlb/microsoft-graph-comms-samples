@@ -18,7 +18,7 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Http
         /// <summary>
         /// Route prefix for all incoming requests.
         /// </summary>
-        public const string CallSignalingRoutePrefix = "api/calls";
+        public const string CallSignalingRoutePrefix = "api/calling";
 
         /// <summary>
         /// Route for incoming call requests.
