@@ -43,8 +43,7 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
         // This dictionnary helps maintaining a mapping of the sockets subscriptions
         private readonly ConcurrentDictionary<uint, uint> msiToSocketIdMapping = new ConcurrentDictionary<uint, uint>();
 
-        private readonly Timer recordingStatusFlipTimer;
-
+        // private readonly Timer recordingStatusFlipTimer;
         private int recordingStatusIndex = -1;
 
         private int participantsCount = 0;
@@ -72,10 +71,10 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
             this.BotMediaStream = new BotMediaStream(this.Call.GetLocalMediaSession(), this.GraphLogger);
 
             // initialize the timer
-            var timer = new Timer(1000 * 60 * 5); // every 5 minutes
-            timer.AutoReset = true;
-            timer.Elapsed += this.OnRecordingStatusFlip;
-            this.recordingStatusFlipTimer = timer;
+            // var timer = new Timer(1000 * 60 * 5); // every 5 minutes
+            // timer.AutoReset = true;
+            // timer.Elapsed += this.OnRecordingStatusFlip;
+            // this.recordingStatusFlipTimer = timer;
 
             // Count the first answer
             this.participantsCount = 1;
@@ -113,8 +112,8 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
                 participant.OnUpdated -= this.OnParticipantUpdated;
             }
 
-            this.recordingStatusFlipTimer.Enabled = false;
-            this.recordingStatusFlipTimer.Elapsed -= this.OnRecordingStatusFlip;
+            // this.recordingStatusFlipTimer.Enabled = false;
+            // this.recordingStatusFlipTimer.Elapsed -= this.OnRecordingStatusFlip;
             this.BotMediaStream.Dispose();
         }
 
@@ -160,6 +159,33 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
         }
 
         /// <summary>
+        /// OnUpdateRecordingStatus.
+        /// </summary>
+        /// <param name="source">source.</param>
+        /// <param name="e">e.</param>
+        private void OnUpdateRecordingStatus(object source, ElapsedEventArgs e)
+        {
+            _ = Task.Run(async () =>
+            {
+                var newStatus = RecordingStatus.Recording;
+
+                this.GraphLogger.Info($"Setting recording status to {newStatus}");
+
+                try
+                {
+                    // NOTE: if your implementation supports stopping the recording during the call, you can call the same method above with RecordingStatus.NotRecording
+                    await this.Call
+                        .UpdateRecordingStatusAsync(newStatus)
+                        .ConfigureAwait(false);
+                }
+                catch (Exception exc)
+                {
+                    this.GraphLogger.Error(exc, $"Setting to flip the recording status to {newStatus}");
+                }
+            }).ForgetAndLogExceptionAsync(this.GraphLogger);
+        }
+
+        /// <summary>
         /// Event fired when the call has been updated.
         /// </summary>
         /// <param name="sender">The call.</param>
@@ -169,10 +195,13 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
             if (e.OldResource.State != e.NewResource.State && e.NewResource.State == CallState.Established)
             {
                 // Call is established. We should start receiving Audio, we can inform clients that we have started recording.
-                this.OnRecordingStatusFlip(sender, null);
+                // this.OnRecordingStatusFlip(sender, null);
 
                 // for testing purposes, flip the recording status automatically at intervals
-                this.recordingStatusFlipTimer.Enabled = true;
+                // this.recordingStatusFlipTimer.Enabled = true;
+
+                // for perf testing purpose we remove the flip and set the recording status to recording
+                this.OnUpdateRecordingStatus(sender, null);
             }
         }
 
