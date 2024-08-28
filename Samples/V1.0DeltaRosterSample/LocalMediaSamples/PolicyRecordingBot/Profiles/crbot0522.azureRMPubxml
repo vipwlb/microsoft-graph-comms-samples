@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AzureRMSwappableCloudServiceV2Name />
+    <AzureRMSwappableCloudServiceV2ResourceGroupName />
+    <AzureRMSwappableCloudServiceV2Location />
+    <AzureCredentials>{"ServiceManagementEndpoint":"https:\/\/management.core.windows.net\/","ResourceManagementEndpoint":"https:\/\/management.azure.com\/","SubscriptionId":"8ee50011-c07c-48df-89e0-905b00d2c006"}</AzureCredentials>
+    <AzureDeploymentLabel>policyrecordingbotvsdeploy</AzureDeploymentLabel>
+    <AzureEnableRemoteDesktop>False</AzureEnableRemoteDesktop>
+    <AzureServiceConfiguration>Cloud</AzureServiceConfiguration>
+    <AzureSolutionConfiguration>Release</AzureSolutionConfiguration>
+    <AzureAppendTimestampToDeploymentLabel>True</AzureAppendTimestampToDeploymentLabel>
+    <EnableApplicationInsights>True</EnableApplicationInsights>
+    <AzureSlot>Production</AzureSlot>
+    <AzureRMCloudServiceV2Name>crbot0522</AzureRMCloudServiceV2Name>
+    <AzureRMCloudServiceV2ResourceGroupName>LIB-CRBOT</AzureRMCloudServiceV2ResourceGroupName>
+    <AzureRMCloudServiceV2Location>{"Name":"eastus2","DisplayName":"East US 2"}</AzureRMCloudServiceV2Location>
+    <AzureRMCloudServiceV2DNSName>crbot0522</AzureRMCloudServiceV2DNSName>
+    <AzureRMKeyVaultName>kv-bot2</AzureRMKeyVaultName>
+    <AzureRMKeyVaultResourceGroupName>Lib-crbot</AzureRMKeyVaultResourceGroupName>
+    <AzureRMKeyVaultLocation>{"Name":"eastus2","DisplayName":"East US 2"}</AzureRMKeyVaultLocation>
+    <AzureRMStorageAccountName>crbot05221stg</AzureRMStorageAccountName>
+    <AzureRMStorageAccountResourceGroupName>Lib-crbot</AzureRMStorageAccountResourceGroupName>
+    <AzureRMStorageAccountLocation>{"Name":"eastus2","DisplayName":"East US 2"}</AzureRMStorageAccountLocation>
+  </PropertyGroup>
+</Project>

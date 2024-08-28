@@ -38,6 +38,7 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="CRWorkerRoleContent\" />
     <Folder Include="Profiles" />
   </ItemGroup>
   <ItemGroup>
@@ -47,11 +48,15 @@
       <Private>True</Private>
       <RoleType>Worker</RoleType>
       <RoleName>CRWorkerRole</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>False</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PublishProfile Include="Profiles\samplebot.azureRMPubxml" />
+    <PublishProfile Include="Profiles\crbot0522.azureRMPubxml" />
     <PublishProfile Include="Profiles\SampleGraphBotProduction1.azurePubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <DiagnosticsConfiguration Include="CRWorkerRoleContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

@@ -3,22 +3,22 @@
   <Role name="CRWorkerRole">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=$storage$;AccountKey=$storageKey$" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=crbot05221stg;AccountKey=$(_crbot05221stg.key_)" />
       <Setting name="ServiceDnsName" value="%ServiceDns%" />
       <!-- xyz.cloudapp.net-->
-      <Setting name="ServiceCNAME" value="%CName%" />
+		<Setting name="ServiceCNAME" value="crbot0522cloud.graphsampletesting.com" />
       <!-- CNAME pointing to the .cloudapp.net if available.-->
-      <Setting name="DefaultCertificate" value="ABC0000000000000000000000000000000000CBA" />
-      <Setting name="APPINSIGHTS_INSTRUMENTATIONKEY" value="" />
-      <Setting name="GroupSize" value="%GroupSize%" />
-      <Setting name="AadAppId" value="%AppId%" />
-      <Setting name="AadAppSecret" value="%AppSecret%" />
+      <Setting name="DefaultCertificate" value="3EAAC8C1F7D36C68F5E70D5485BAA12D82736E7D" />
+      <Setting name="APPINSIGHTS_INSTRUMENTATIONKEY" value="8eec2714-4544-4e0d-834b-1b2675e88758" />
+		<Setting name="GroupSize" value="1000" />
+		<Setting name="AadAppId" value="c83a3ff9-b4b8-4292-8428-be2682cc531c" />
+		<Setting name="AadAppSecret" value="d658Q~b3_sTcOblCqGqYjjPREIQY6awwz3i6rcMo" />
       <Setting name="SingleAudioStream" value="false" />
       <Setting name="DisableAppInsightLogging" value="false" />
       <Setting name="DisableAudioStreamIo" value="false" />
     </ConfigurationSettings>
     <Certificates>
-      <Certificate name="Default" thumbprint="ABC0000000000000000000000000000000000CBA" thumbprintAlgorithm="sha1" />
+      <Certificate name="Default" thumbprint="3EAAC8C1F7D36C68F5E70D5485BAA12D82736E7D" thumbprintAlgorithm="sha1" />
     </Certificates>
   </Role>
   <NetworkConfiguration>

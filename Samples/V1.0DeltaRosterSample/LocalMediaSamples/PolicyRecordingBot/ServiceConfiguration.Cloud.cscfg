@@ -2,38 +2,38 @@
 <ServiceConfiguration serviceName="PolicyRecordingBot" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="6" osVersion="*" schemaVersion="2015-04.2.6">
   <Role name="CRWorkerRole">
     <Instances count="1" />
-    <ConfigurationSettings> 
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=$storage$;AccountKey=$storageKey$" />
-		<Setting name="ServiceDnsName" value="crbot0522.eastus2.cloudapp.azure.com" />
-		<!-- xyz.cloudapp.net-->
-		<Setting name="ServiceCNAME" value="crbot0522cloud.graphsampletesting.com" />
-      <!-- CNAME pointing to the .cloudapp.net if available.--> 
-      <Setting name="DefaultCertificate" value="3EAAC8C1F7D36C68F5E70D5485BAA12D82736E7D" /> 
-      <Setting name="APPINSIGHTS_INSTRUMENTATIONKEY" value="" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=crbot05221stg;AccountKey=$(_crbot05221stg.key_)" />
+      <Setting name="ServiceDnsName" value="crbot0522.eastus2.cloudapp.azure.com" />
+      <!-- xyz.cloudapp.net-->
+      <Setting name="ServiceCNAME" value="crbot0522cloud.graphsampletesting.com" />
+      <!-- CNAME pointing to the .cloudapp.net if available.-->
+      <Setting name="DefaultCertificate" value="3EAAC8C1F7D36C68F5E70D5485BAA12D82736E7D" />
+      <Setting name="APPINSIGHTS_INSTRUMENTATIONKEY" value="8eec2714-4544-4e0d-834b-1b2675e88758" />
       <Setting name="GroupSize" value="1000" />
       <Setting name="AadAppId" value="c83a3ff9-b4b8-4292-8428-be2682cc531c" />
       <Setting name="AadAppSecret" value="d658Q~b3_sTcOblCqGqYjjPREIQY6awwz3i6rcMo" />
       <Setting name="SingleAudioStream" value="false" />
       <Setting name="DisableAppInsightLogging" value="false" />
       <Setting name="DisableAudioStreamIo" value="false" />
-    </ConfigurationSettings> 
-    <Certificates> 
-      <Certificate name="Default" thumbprint="3EAAC8C1F7D36C68F5E70D5485BAA12D82736E7D" thumbprintAlgorithm="sha1" /> 
-    </Certificates> 
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Default" thumbprint="3EAAC8C1F7D36C68F5E70D5485BAA12D82736E7D" thumbprintAlgorithm="sha1" />
+    </Certificates>
   </Role>
-	<NetworkConfiguration>
-		<!-- Name of VirtualNetworSite.-->
-		<VirtualNetworkSite name="crbotvnet-1" />
-		<AddressAssignments>
-			<InstanceAddress roleName="CRWorkerRole">
-				<!-- Name of Subnets.-->
-				<Subnets>
-					<Subnet name="crbotsubnet-1"/>
-				</Subnets>
-				<PublicIPs>
-					<PublicIP name="crbot-ip" domainNameLabel="pip1" />
-				</PublicIPs>
-			</InstanceAddress>
-		</AddressAssignments>
-	</NetworkConfiguration>
+  <NetworkConfiguration>
+    <!-- Name of VirtualNetworSite.-->
+    <VirtualNetworkSite name="crbotvnet-1" />
+    <AddressAssignments>
+      <InstanceAddress roleName="CRWorkerRole">
+        <!-- Name of Subnets.-->
+        <Subnets>
+          <Subnet name="crbotsubnet-1" />
+        </Subnets>
+        <PublicIPs>
+          <PublicIP name="crbot-ip" domainNameLabel="pip1" />
+        </PublicIPs>
+      </InstanceAddress>
+    </AddressAssignments>
+  </NetworkConfiguration>
 </ServiceConfiguration>

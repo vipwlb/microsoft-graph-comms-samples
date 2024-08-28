@@ -9,6 +9,7 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Data;
+    using System.Diagnostics;
     using System.Threading.Tasks;
     using Microsoft.Graph.Communications.Calls;
     using Microsoft.Graph.Communications.Calls.Media;
@@ -242,6 +243,13 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
                 IMediaSession mediaSession = Guid.TryParse(call.Id, out Guid callId)
                     ? this.CreateLocalMediaSession(callId)
                     : this.CreateLocalMediaSession();
+
+                this.Client.GraphLogger.Warn($"CallsOnUpdated: Trace.AutoFlush={Trace.AutoFlush}");
+                if (Trace.AutoFlush)
+                {
+                    Trace.AutoFlush = false;
+                    this.Client.GraphLogger.Warn($"CallsOnUpdated: Trace.AutoFlush was true, setting to false");
+                }
 
                 // Answer call
                 call?.AnswerAsync(mediaSession: mediaSession, participantCapacity: (int)this.service.Configuration.GroupSize, isDeltaRosterPublishEnabled: true).ForgetAndLogExceptionAsync(
