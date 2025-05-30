@@ -12,10 +12,10 @@
     <AzureAppendTimestampToDeploymentLabel>True</AzureAppendTimestampToDeploymentLabel>
     <EnableApplicationInsights>True</EnableApplicationInsights>
     <AzureSlot>Production</AzureSlot>
-    <AzureRMCloudServiceV2Name>crbot0522</AzureRMCloudServiceV2Name>
+    <AzureRMCloudServiceV2Name>crbotpair0529</AzureRMCloudServiceV2Name>
     <AzureRMCloudServiceV2ResourceGroupName>LIB-CRBOT</AzureRMCloudServiceV2ResourceGroupName>
     <AzureRMCloudServiceV2Location>{"Name":"eastus2","DisplayName":"East US 2"}</AzureRMCloudServiceV2Location>
-    <AzureRMCloudServiceV2DNSName>crbot0522</AzureRMCloudServiceV2DNSName>
+    <AzureRMCloudServiceV2DNSName>crbotpair0529</AzureRMCloudServiceV2DNSName>
     <AzureRMKeyVaultName>kv-bot2</AzureRMKeyVaultName>
     <AzureRMKeyVaultResourceGroupName>Lib-crbot</AzureRMKeyVaultResourceGroupName>
     <AzureRMKeyVaultLocation>{"Name":"eastus2","DisplayName":"East US 2"}</AzureRMKeyVaultLocation>

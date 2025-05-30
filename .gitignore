@@ -275,3 +275,5 @@ appsettings.development.json
 
 # Cache file that gets created when running audio bot
 *.dat
+/Samples/V1.0DeltaRosterSample/LocalMediaSamples/PolicyRecordingBot/WorkerRole/ApplicationInsights.config
+/.gitignore

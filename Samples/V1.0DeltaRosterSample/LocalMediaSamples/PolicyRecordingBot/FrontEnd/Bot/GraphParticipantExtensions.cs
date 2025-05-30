@@ -12,13 +12,12 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.Graph.Contracts;
-    using Microsoft.Graph.Models;
+    using Microsoft.Graph;
+    using Microsoft.Graph.Beta.Models;
 
     public static class GraphParticipantExtensions
     {
         /// <summary>
-        /// Same as <see cref="IdentitySetExtensions.GetPrimaryIdentityWithType"/> but a bit more efficient
         /// as it avoids invoking the methods or properties twice, once for null checking and then for returning.
         /// The priority order has been tweaked to move applicationInstance and application up.
         /// </summary>

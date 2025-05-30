@@ -9,7 +9,7 @@ namespace Sample.Common.Utils
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.Graph.Communications.Resources;
-    using Microsoft.Graph.Models;
+    using Microsoft.Graph.Beta.Models;
 
     /// <summary>
     /// Resource extensions for testing.

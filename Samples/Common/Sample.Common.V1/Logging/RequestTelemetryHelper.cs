@@ -48,9 +48,16 @@ using Microsoft.ApplicationInsights.DataContracts;
             }
             request.Success = success;
             request.ResponseCode = (success) ? SUCCESS_CODE : FAILURE_CODE;
-
+            AddResponseCodeMetric(request, request.ResponseCode);
             if (request.Properties.ContainsKey(IsNotificationTempPropertyName)) return;
             Dispatch(request);
+        }
+
+        private static void AddResponseCodeMetric(RequestTelemetry request, string responseCode)
+        {
+            string metric = $"ResponseCode_{responseCode}";
+            if (request.Metrics.ContainsKey(metric)) return;            
+            request.Metrics.Add(metric, 1);
         }
 
         /// <summary>

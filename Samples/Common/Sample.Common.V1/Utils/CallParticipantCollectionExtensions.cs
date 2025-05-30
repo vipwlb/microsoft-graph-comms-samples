@@ -10,7 +10,7 @@ namespace Sample.Common.Utils
     using System.Threading.Tasks;
     using Microsoft.Graph.Communications.Calls;
     using Microsoft.Graph.Communications.Common;
-    using Microsoft.Graph.Models;
+    using Microsoft.Graph.Beta.Models;
 
     /// <summary>
     /// The call extensions.

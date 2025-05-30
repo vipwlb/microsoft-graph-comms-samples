@@ -5,11 +5,11 @@
 
 namespace Sample.PolicyRecordingBot.FrontEnd.Bot.Grouping
 {
+    using Microsoft.Graph.Beta.Models;
     using Microsoft.Graph.Communications.Calls;
     using Microsoft.Graph.Communications.Calls.Media;
     using Microsoft.Graph.Communications.Common.Telemetry;
     using Microsoft.Graph.Communications.Resources;
-    using Microsoft.Graph.Models;
     using Sample.Common.Beta.Logging;
 
 #pragma warning disable SA1600 // Elements should be documented

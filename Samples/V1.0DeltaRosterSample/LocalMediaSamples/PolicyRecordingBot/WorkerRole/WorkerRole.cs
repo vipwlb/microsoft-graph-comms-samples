@@ -12,6 +12,7 @@ namespace Sample.PolicyRecordingBot.WorkerRole
 {
     using System;
     using System.Net;
+    using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Graph.Communications.Common.Telemetry;
@@ -53,9 +54,16 @@ namespace Sample.PolicyRecordingBot.WorkerRole
         /// </summary>
         public WorkerRole()
         {
-            this.logger = new GraphLogger(typeof(WorkerRole).Assembly.GetName().Name, redirectToTrace: true);
-            this.instrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
-            this.singleAudioStream = bool.Parse(RoleEnvironment.GetConfigurationSettingValue("SingleAudioStream"));
+            try
+            {
+                this.logger = new GraphLogger(typeof(WorkerRole).Assembly.GetName().Name, redirectToTrace: true);
+                this.instrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
+                this.singleAudioStream = bool.Parse(RoleEnvironment.GetConfigurationSettingValue("SingleAudioStream"));
+            }
+            catch (ReflectionTypeLoadException ex)
+            {
+                this.logger.Info("WorkerRole failed at " + ex.Message);
+            }
         }
 
         /// <summary>

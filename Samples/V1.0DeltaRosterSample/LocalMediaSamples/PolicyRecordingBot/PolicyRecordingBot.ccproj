@@ -52,7 +52,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PublishProfile Include="Profiles\crbot0522.azureRMPubxml" />
+    <PublishProfile Include="Profiles\crbotpair.azureRMPubxml" />
     <PublishProfile Include="Profiles\SampleGraphBotProduction1.azurePubxml" />
   </ItemGroup>
   <ItemGroup>

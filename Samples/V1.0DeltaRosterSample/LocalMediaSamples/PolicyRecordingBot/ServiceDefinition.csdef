@@ -33,6 +33,9 @@
       <Setting name="SingleAudioStream" />
       <Setting name="DisableAppInsightLogging" />
       <Setting name="DisableAudioStreamIo" />
+		<Setting name="IsDeltaRosterEnabled" />
+		<Setting name="IsInteractiveRosterEnabled" />
+		<Setting name="IsContentSharingNotificationEnabled" />
     </ConfigurationSettings>
     <Endpoints>
       <InputEndpoint name="DefaultEndpoint" protocol="tcp" port="443" localPort="9441" />

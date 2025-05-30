@@ -33,7 +33,7 @@ namespace Sample.PolicyRecordingBot.WorkerRole
         /// DomainNameLabel in NetworkConfiguration in .cscfg  <PublicIP name="instancePublicIP" domainNameLabel="pip"/>
         /// If the below changes, please change in the cscfg as well.
         /// </summary>
-        public const string DomainNameLabel = "pip1";
+        public const string DomainNameLabel = "crbotpair0529";
 
         /// <summary>
         /// The default endpoint key.
@@ -172,6 +172,15 @@ namespace Sample.PolicyRecordingBot.WorkerRole
 
         /// <inheritdoc />
         public bool DisableAudioStreamIo { get; private set; }
+
+        /// <inheritdoc>
+        public bool IsDeltaRosterEnabled { get; private set; }
+
+        /// <inheritdoc>
+        public bool IsInteractiveRosterEnabled { get; private set; }
+
+        /// <inheritdoc>
+        public bool IsContentSharingNotificationEnabled { get; private set; }
 
         /// <summary>
         /// Initialize from serviceConfig.

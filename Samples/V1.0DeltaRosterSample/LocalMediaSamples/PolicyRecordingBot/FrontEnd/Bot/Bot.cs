@@ -11,6 +11,7 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
     using System.Data;
     using System.Diagnostics;
     using System.Threading.Tasks;
+    using Microsoft.Graph.Beta.Models;
     using Microsoft.Graph.Communications.Calls;
     using Microsoft.Graph.Communications.Calls.Media;
     using Microsoft.Graph.Communications.Client;
@@ -18,7 +19,6 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
     using Microsoft.Graph.Communications.Common.Telemetry;
     using Microsoft.Graph.Communications.Core.Notifications;
     using Microsoft.Graph.Communications.Resources;
-    using Microsoft.Graph.Models;
     using Microsoft.Skype.Bots.Media;
     using Sample.Common;
     using Sample.Common.Authentication;
@@ -32,6 +32,7 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
     internal class Bot : IDisposable
     {
         private Service service;
+        private IncomingCallOptions callOptions;
 
         /// <summary>
         /// Gets the instance of the bot.
@@ -79,6 +80,11 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
             Validator.IsNull(this.Logger, "Multiple initializations are not allowed.");
 
             this.service = service;
+            this.callOptions = new IncomingCallOptions();
+            this.callOptions.IsDeltaRosterEnabled = service.Configuration.IsDeltaRosterEnabled;
+            this.callOptions.IsInteractiveRosterEnabled = service.Configuration.IsInteractiveRosterEnabled;
+            this.callOptions.IsContentSharingNotificationEnabled = service.Configuration.IsContentSharingNotificationEnabled;
+
             this.Logger = logger;
             if (config.DisableAppInsightLogging)
             {
@@ -252,9 +258,8 @@ namespace Sample.PolicyRecordingBot.FrontEnd.Bot
                 }
 
                 // Answer call
-                call?.AnswerAsync(mediaSession: mediaSession, participantCapacity: (int)this.service.Configuration.GroupSize, isDeltaRosterPublishEnabled: true).ForgetAndLogExceptionAsync(
-                    call.GraphLogger,
-                    $"Answering call {call.Id} with scenario {call.ScenarioId}.");
+                call?.AnswerAsync(mediaSession: mediaSession, this.callOptions, participantCapacity: (int)this.service.Configuration.GroupSize).
+                ForgetAndLogExceptionAsync(call.GraphLogger, $"Answering call {call.Id} with scenario {call.ScenarioId}.");
             });
         }
 

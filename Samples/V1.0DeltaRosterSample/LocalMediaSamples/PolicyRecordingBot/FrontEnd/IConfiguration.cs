@@ -17,7 +17,6 @@ namespace Sample.PolicyRecordingBot.FrontEnd
 {
     using System;
     using System.Collections.Generic;
-
     using Microsoft.Skype.Bots.Media;
 
     /// <summary>
@@ -88,5 +87,20 @@ namespace Sample.PolicyRecordingBot.FrontEnd
         /// Gets a value indicating whether to disable i/o stream writing.
         /// </summary>
         bool DisableAudioStreamIo { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether to disable IsDeltaRosterEnabled.
+        /// </summary>
+        bool IsDeltaRosterEnabled { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether to IsInteractiveRosterEnabled.
+        /// </summary>
+        bool IsInteractiveRosterEnabled { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether to IsContentSharingNotificationEnabled.
+        /// </summary>
+        bool IsContentSharingNotificationEnabled { get; }
     }
 }
